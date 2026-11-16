@@ -47,7 +47,7 @@ class CalcViewModel(
     fun loadWorkbook(inputStream: InputStream, fileName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.update { it.copy(isProcessing = true) }
-            val ext = fileName.substringAfterLast(".", "xlsx").lowercase()
+            val ext = fileName.substringAfterLast(".").lowercase()
             val docType = DocumentType.fromExtension(ext) ?: DocumentType.CALC_XLSX
             val wb = when (docType) {
                 DocumentType.CALC_ODS -> OdsEngine.readOds(inputStream)

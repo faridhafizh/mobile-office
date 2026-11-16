@@ -61,8 +61,6 @@ fun SpreadsheetGridCanvas(
                         onCellSelected(CellPosition(col, row))
                     }
                 }
-            }
-            .pointerInput(Unit) {
                 detectDragGestures { change, dragAmount ->
                     change.consume()
                     scrollX = max(0f, scrollX - dragAmount.x)
